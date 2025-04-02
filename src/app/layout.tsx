@@ -1,20 +1,15 @@
-import type { Metadata } from "next";
-import "./globals.css";
+"use client";
 
-export const metadata: Metadata = {
-  title: "Full-Stack Todo App",
-  description: "A full-stack todo app built with Next.js, Prisma, and Tailwind CSS.",
-};
+import { SessionProvider } from "next-auth/react";
+import "./globals.css"; // Import global styles
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
-        {children}
+        <SessionProvider>
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );
